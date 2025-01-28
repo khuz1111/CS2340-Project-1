@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GT Movies Store{% endblock %}</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 15px;
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div>
+            <a href="{% url 'home' %}">GT Movies Store</a>
+        </div>
+        <div class="right">
+            {% if user.is_authenticated %}
+                <span>Hello, {{ user.username }}!</span>
+                <a href="{% url 'logout' %}" style="margin-left: 15px;">Logout</a>
+            {% else %}
+                <a href="{% url 'register' %}">Register</a> |
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding: 20px;">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>
