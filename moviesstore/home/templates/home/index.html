@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,5 +7,15 @@
 </head>
 <body>
     <h1>Welcome to the Home Page</h1>
+    <p>GT Movies Store is a webpage application which allows you to access information <br>
+        about movies and place orders to purchase them. You will also be able to create reviews <br>
+        for movies you have already seen, and see others' reviews.</p>
+    <p>
+        {% if not user.is_authenticated %}
+                <a href="{% url 'register' %}">Register</a> |
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+    </p>
 </body>
 </html>
+{% endblock %}
